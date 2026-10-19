@@ -21,7 +21,7 @@ sweep:
   num_images:
     smoke: 1
     baseline: 32
-    extended: 120
+    extended: 72
   num_inference_steps:
     smoke: 2
     baseline: 30

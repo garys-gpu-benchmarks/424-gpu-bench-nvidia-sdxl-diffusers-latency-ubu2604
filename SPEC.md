@@ -15,7 +15,7 @@ Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdx
 | prompt_len | `--prompt-len` | smoke=32, baseline=32, extended=32 | 32 | From Parameter list; see Execution Description With Parameters. |
 | image_resolution | `--image-resolution` | smoke=64, baseline=512, extended=1024 | 512 | From Parameter list; see Execution Description With Parameters. |
 | batch_size | `--batch-size` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
-| num_images | `--num-images` | smoke=1, baseline=32, extended=120 | 32 | From Parameter list; see Execution Description With Parameters. |
+| num_images | `--num-images` | smoke=1, baseline=32, extended=72 | 32 | From Parameter list; see Execution Description With Parameters. |
 | num_inference_steps | `--num-inference-steps` | smoke=2, baseline=30, extended=50 | 30 | From Parameter list; see Execution Description With Parameters. |
 | guidance_scale | `--guidance-scale` | smoke=0, baseline=0, extended=0 | 0 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
