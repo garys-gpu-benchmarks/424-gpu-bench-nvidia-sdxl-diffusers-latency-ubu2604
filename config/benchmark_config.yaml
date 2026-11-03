@@ -12,12 +12,10 @@ sweep:
   precision: fp16
   scheduler: euler
   prompt_source: synthetic
-  prompt_len: 32
   image_resolution:
     smoke: 64
     baseline: 512
     extended: 1024
-  batch_size: 1
   num_images:
     smoke: 1
     baseline: 32
@@ -28,3 +26,5 @@ sweep:
     extended: 50
   guidance_scale: 0
   seed: 42
+  prompt_len: 32
+  batch_size: 1

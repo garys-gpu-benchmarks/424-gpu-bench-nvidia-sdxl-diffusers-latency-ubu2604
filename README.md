@@ -85,7 +85,7 @@ Three operator scripts from [`garys-gpu-benchmarks/gpu-bench-suite`](https://git
 
 ## 1. Overview
 
-Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. Sweep dimensions: model_name, precision, scheduler, prompt_source, prompt_len, image_resolution, batch_size, num_images.
+Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. Sweep dimensions: model_name, precision, scheduler, prompt_source, image_resolution, num_images, num_inference_steps, guidance_scale.
 
 ## 2. What It Validates
 

@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. Sweep dimensions: model_name, precision, scheduler, prompt_source, prompt_len, image_resolution, batch_size, num_images.
+Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. Sweep dimensions: model_name, precision, scheduler, prompt_source, image_resolution, num_images, num_inference_steps, guidance_scale.
 
 ## Parameters
 
@@ -12,13 +12,13 @@ Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdx
 | precision | `--precision` | smoke=fp16, baseline=fp16, extended=fp16 | fp16 | From Parameter list; see Execution Description With Parameters. |
 | scheduler | `--scheduler` | smoke=euler, baseline=euler, extended=euler | euler | From Parameter list; see Execution Description With Parameters. |
 | prompt_source | `--prompt-source` | smoke=synthetic, baseline=synthetic, extended=synthetic | synthetic | From Parameter list; see Execution Description With Parameters. |
-| prompt_len | `--prompt-len` | smoke=32, baseline=32, extended=32 | 32 | From Parameter list; see Execution Description With Parameters. |
 | image_resolution | `--image-resolution` | smoke=64, baseline=512, extended=1024 | 512 | From Parameter list; see Execution Description With Parameters. |
-| batch_size | `--batch-size` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
 | num_images | `--num-images` | smoke=1, baseline=32, extended=72 | 32 | From Parameter list; see Execution Description With Parameters. |
 | num_inference_steps | `--num-inference-steps` | smoke=2, baseline=30, extended=50 | 30 | From Parameter list; see Execution Description With Parameters. |
 | guidance_scale | `--guidance-scale` | smoke=0, baseline=0, extended=0 | 0 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
+| prompt_len | `--prompt-len` | smoke=32, baseline=32, extended=32 | 32 | From Parameter list; see Execution Description With Parameters. |
+| batch_size | `--batch-size` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
 
 ## Invocation
 

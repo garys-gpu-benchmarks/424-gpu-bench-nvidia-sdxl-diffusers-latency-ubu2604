@@ -102,17 +102,17 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --prompt-len 32 --image-resolution 64 --batch-size 1 --num-images 1 --num-inference-steps 2 --guidance-scale 0 --seed 42"
+    "value": "bash run_benchmark.sh --smoke --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --image-resolution 64 --num-images 1 --num-inference-steps 2 --guidance-scale 0 --seed 42 --prompt-len 32 --batch-size 1"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --prompt-len 32 --image-resolution 512 --batch-size 1 --num-images 32 --num-inference-steps 30 --guidance-scale 0 --seed 42"
+    "value": "bash run_benchmark.sh --baseline --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --image-resolution 512 --num-images 32 --num-inference-steps 30 --guidance-scale 0 --seed 42 --prompt-len 32 --batch-size 1"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Extended Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --prompt-len 32 --image-resolution 1024 --batch-size 1 --num-images 72 --num-inference-steps 50 --guidance-scale 0 --seed 42"
+    "value": "bash run_benchmark.sh --extended --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --image-resolution 1024 --num-images 72 --num-inference-steps 50 --guidance-scale 0 --seed 42 --prompt-len 32 --batch-size 1"
   },
   {
     "field_name": "Output Fields / Metrics to Parse",
@@ -247,37 +247,37 @@
   {
     "field_name": "Parameter_05",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "prompt_len"
+    "value": "image_resolution"
   },
   {
     "field_name": "Parameter_06",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "image_resolution"
+    "value": "num_images"
   },
   {
     "field_name": "Parameter_07",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "batch_size"
+    "value": "num_inference_steps"
   },
   {
     "field_name": "Parameter_08",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "num_images"
+    "value": "guidance_scale"
   },
   {
     "field_name": "Parameter_09",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "num_inference_steps"
+    "value": "seed"
   },
   {
     "field_name": "Parameter_10",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "guidance_scale"
+    "value": "prompt_len"
   },
   {
     "field_name": "Parameter_11",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "seed"
+    "value": "batch_size"
   },
   {
     "field_name": "Parameter_12",
