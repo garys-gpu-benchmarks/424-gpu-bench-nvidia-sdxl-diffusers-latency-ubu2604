@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # File: run_benchmark.sh
 # Description: Every profile loads real SDXL; smoke uses reduced resolution and steps.
-# Execution: bash run_benchmark.sh [--smoke|--baseline|--extended] [--validate]
+# Execution: bash run_benchmark.sh [--smoke|--baseline|--extended]
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_NAME="$(basename "${REPO_ROOT}")"
@@ -18,42 +18,41 @@ Measure Stable Diffusion XL inference latency, images/sec, and peak VRAM.
 Every profile loads stabilityai/stable-diffusion-xl-base-1.0.
 Smoke uses reduced resolution and steps, but never substitutes a tiny model.
 
-Profiles:
+Profiles (default: --smoke):
   --smoke                       Run smoke profile
   --baseline                    Run baseline profile
   --extended                    Run extended profile
 
-Execution:
-  --config <file>               Config file (default: config/benchmark_config.yaml)
+Parameters (override the profile's value):
+  --model-name <value>          Model or weights identifier to load (smoke/baseline/extended: sdxl-base-1.0)
+  --precision <value>           Arithmetic or compute precision (smoke/baseline/extended: fp16)
+  --scheduler <value>           Shared workload parameter (smoke/baseline/extended: euler)
+  --prompt-source <value>       Source or generation mode for input prompts (smoke/baseline/extended: synthetic)
+  --image-resolution <value>    Shared workload parameter (smoke 64, baseline 512, extended 1024)
+  --num-images <value>          Shared workload parameter (smoke 1, baseline 32, extended 72)
+  --num-inference-steps <value> Shared workload parameter (smoke 2, baseline 30, extended 50)
+  --guidance-scale <value>      Shared workload parameter (smoke/baseline/extended: 0)
+  --seed <n>                    Random seed used for reproducibility (smoke/baseline/extended: 42)
+  --prompt-len <value>          Shared workload parameter (smoke/baseline/extended: 32)
+  --batch-size <n>              Number of items processed together (smoke/baseline/extended: 1)
 
-Validation and logging:
-  --validate                    Enable result validation (default)
-  --no-validate                 Skip result validation
+General options:
+  --config <file>               Config file (default: config/benchmark_config.yaml)
   --quiet                       Suppress nonessential stdout
   --log-level <level>           ERROR|WARN|INFO|DEBUG (default: INFO)
-
-Workload options:
-  --model-name <name>           SDXL variant token (sdxl-base-1.0)
-  --precision <token>           Weight and activation precision (fp16)
-  --scheduler <name>            Denoising scheduler (euler)
-  --prompt-source <name>        Prompt generation method (synthetic)
-  --prompt-len <token>          Synthetic prompt-length token (true)
-  --image-resolution <n>        Output image edge length
-  --batch-size <token>          Images per step token (true means 1)
-  --num-images <n>              Images generated in the timed pass
-  --num-inference-steps <n>     Denoising steps per image
-  --guidance-scale <n>          Classifier-free guidance scale (0.0)
-  --seed <n>                    RNG seed (42)
-
-Information:
   --specification               Print this workload's specification and exit
   --help                        Show this help and exit
+
+Examples:
+  bash run_benchmark.sh --smoke
+  bash run_benchmark.sh --baseline
+  bash run_benchmark.sh --extended
+  bash run_benchmark.sh --baseline --batch-size 2
 USAGE
 }
 
 PROFILE="smoke"
 CONFIG_FILE="config/benchmark_config.yaml"
-VALIDATE=1
 QUIET=0
 LOG_LEVEL_VALUE="INFO"
 MODEL_NAME=""
@@ -84,8 +83,7 @@ while [[ $# -gt 0 ]]; do
     --baseline) PROFILE="baseline"; shift ;;
     --extended) PROFILE="extended"; shift ;;
     --config) CONFIG_FILE="${2:-}"; shift 2 ;;
-    --validate) VALIDATE=1; shift ;;
-    --no-validate) VALIDATE=0; shift ;;
+    --validate) shift ;;  # ignored; result validation always runs
     --quiet) QUIET=1; shift ;;
     --log-level) LOG_LEVEL_VALUE="${2:-}"; shift 2 ;;
     --model-name) MODEL_NAME="${2:-}"; shift 2 ;;
@@ -150,7 +148,6 @@ NUM_INFERENCE_STEPS="${NUM_INFERENCE_STEPS:-2}"
 (( NUM_INFERENCE_STEPS < 2 )) && NUM_INFERENCE_STEPS=2
 
 BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
-[[ "${VALIDATE}" -eq 1 ]] && BENCHMARK_RUN_COMMAND+=" --validate" || BENCHMARK_RUN_COMMAND+=" --no-validate"
 BENCHMARK_RUN_COMMAND+=" --model-name ${MODEL_NAME} --precision ${PRECISION} --scheduler ${SCHEDULER}"
 BENCHMARK_RUN_COMMAND+=" --prompt-source ${PROMPT_SOURCE} --prompt-len ${PROMPT_LEN}"
 BENCHMARK_RUN_COMMAND+=" --image-resolution ${IMAGE_RESOLUTION} --batch-size ${BATCH_SIZE}"
@@ -239,7 +236,7 @@ run_validate() {
 
 run_collection
 run_parse
-[[ "${VALIDATE}" -eq 1 ]] && run_validate
+run_validate
 
 if [[ -f "${RAW_FILE}" ]]; then
   cp "${RAW_FILE}" "${RUN_DIR}/run.log"
