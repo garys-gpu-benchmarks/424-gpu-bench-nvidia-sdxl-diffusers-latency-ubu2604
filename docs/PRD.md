@@ -21,7 +21,7 @@ Run scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl
 Measure SDXL image-generation performance
 
 ## Validation Objective
-Validates SDXL image-generation latency, images/s, and peak VRAM. Every profile loads the real SDXL pipeline; smoke uses reduced resolution and steps
+Validates SDXL latency, images/s, and peak VRAM. Smoke uses reduced resolution and steps
 
 ## Workload Category
 Training, Inference, Model Workloads
