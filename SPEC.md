@@ -23,7 +23,7 @@ Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdx
 ## Invocation
 
 ```bash
-Run scripts/collect_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps
+Run scripts/collect_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps
 ```
 
 ## Raw Output Format
@@ -52,7 +52,7 @@ Run scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl
 ## Platform Portability
 
 - **AMD (primary):** ```bash
-Run scripts/collect_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps
+Run scripts/collect_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps
 ```
 - **NVIDIA:** Native NVIDIA CUDA workload. Execute on the stated Ubuntu release with the host NVIDIA driver and CUDA userspace. ROCm porting notes do not apply.
 

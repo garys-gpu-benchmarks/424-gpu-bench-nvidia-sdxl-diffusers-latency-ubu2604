@@ -37,7 +37,7 @@
   {
     "field_name": "Command Tools Executed",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/collect_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
+    "value": "Run scripts/collect_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps"
   },
   {
     "field_name": "Metrics",
@@ -202,17 +202,17 @@
   {
     "field_name": "GPU Model",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "H100 SXM 80GB"
-  },
-  {
-    "field_name": "Raw Output Format",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "raw_results.csv with pass1, pass2, and summary. collect_sdxl.py launches infer_sdxl.py twice"
+    "value": "--"
   },
   {
     "field_name": "Primary Record Granularity",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "one row per inference pass and one summary row"
+  },
+  {
+    "field_name": "Raw Output Format",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "raw_results.csv with pass1, pass2, and summary. collect_sdxl.py launches infer_sdxl.py twice"
   },
   {
     "field_name": "Raw Output Example",
@@ -225,19 +225,19 @@
     "value": "per_image_latency_sec, images_per_sec, peak_vram_gb, step_time_ms, first_image_latency_s. step_time_ms is timed per denoising step with callback_on_step_end. first_image_latency_s starts before from_pretrained, so it includes weight load"
   },
   {
-    "field_name": "Success Criteria",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Both inference passes exit 0 and the summary has finite images/s, step time, and first-image latency"
-  },
-  {
     "field_name": "Parser and Normalization Notes",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "The collector launches inference twice and writes pass1, pass2, and summary. first_image_latency_s starts before from_pretrained, so it includes weight load. Image files are artifacts, not metrics"
   },
   {
+    "field_name": "Success Criteria",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Both inference passes exit 0 and the summary has finite images/s, step time, and first-image latency"
+  },
+  {
     "field_name": "Hardware Config",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "NVIDIA H100 SXM host (20+ vCPUs, 128+ GB RAM, local NVMe), 1x H100 SXM (80 GB HBM3, sm_90, 132 SMs)"
+    "value": "Cloud GPU host such as a RunPod Pod (20+ vCPUs, 128+ GB RAM, local NVMe), 1x NVIDIA data-center GPU (80+ GB HBM; model varies by provider)"
   },
   {
     "field_name": "GPU Architecture",
@@ -377,7 +377,7 @@
   {
     "field_name": "Workload Command Line Executable",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/collect_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
+    "value": "Run scripts/collect_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps"
   },
   {
     "field_name": "ROCm Version",
