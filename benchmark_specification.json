@@ -40,6 +40,11 @@
     "value": "Run scripts/collect_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps"
   },
   {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. output_format: csv"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Per-image latency (per_image_latency_sec); #2: Aggregate throughput (images_per_sec); #3: Peak VRAM, GB (peak_vram_gb); #4: Denoising step time per batch, ms (step_time_ms); #5: First-image latency, cold (first_image_latency_s)"
@@ -173,11 +178,6 @@
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Run scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. Write pass1, pass2, and summary rows for per-image latency, images per second, and peak VRAM"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Runs scripts/collect_sdxl.py, which launches scripts/infer_sdxl.py --backend sdxl twice. Every profile loads real SDXL; smoke uses reduced resolution and steps. precision, scheduler, image_resolution, num_images, num_inference_steps, guidance_scale, and seed come from yaml. Writes pass1, pass2, and summary rows. output_format: csv"
   },
   {
     "field_name": "Execution Domain",
